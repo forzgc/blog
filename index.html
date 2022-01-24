@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>川的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="川的小屋">
+<meta property="og:url" content="https://blog.forzgc.cn/index.html">
+<meta property="og:site_name" content="川的小屋">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="chuan">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="川的小屋" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">川的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.forzgc.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-React" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/01/15/React/" class="article-date">
+  <time class="dt-published" datetime="2022-01-15T09:29:02.000Z" itemprop="datePublished">2022-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/01/15/React/">React</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><ul>
+<li>绑定事件名为驼峰写法，例如：onClick</li>
+<li>使用 {} 绑定处理函数<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;</span><br><span class="line">  Activate Lasers</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>使用e.preventDefault()阻止事件默认行为，不能再使用 (return false) 的形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Form() &#123;</span><br><span class="line">  function handleSubmit(e) &#123;</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    console.log(&#x27;You clicked submit.&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;form onSubmit=&#123;handleSubmit&#125;&gt;</span><br><span class="line">      &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：此e和原生的事件不同</p>
+<p>Class形式的Component<br>如果事件处理函数中需要使用组件实例，那么需要在Constructor中用bind()为事件处理函数绑定上下文this</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state = &#123;isToggleOn: true&#125;;</span><br><span class="line"></span><br><span class="line">    // This binding is necessary to make `this` work in the callback</span><br><span class="line">    this.handleClick = this.handleClick.bind(this);</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>也可使用另外两种方式代替：<a target="_blank" rel="noopener" href="https://reactjs.org/docs/handling-events.html">https://reactjs.org/docs/handling-events.html</a></p>
+<p>绑定事件自定义传参</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;(e) =&gt; this.deleteRow(id, e)&#125;&gt;Delete Row&lt;/button&gt;</span><br><span class="line">&lt;button onClick=&#123;this.deleteRow.bind(this, id)&#125;&gt;Delete Row&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><ol>
+<li>在js部分使用 if…else if…else语法 条件使用jsx表达式</li>
+<li>在jsx表达式{}中使用 &amp;&amp; 或者 三元运算符</li>
+<li>render()函数返回null可以让组件自身不被渲染出来，但是组件生命周期仍会运行</li>
+</ol>
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2022/01/15/React/" data-id="ckysqp4y70001fpte8sp41ks0" data-title="React" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Phicomm-N1-安装-Arch-Linux-Arm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/" class="article-date">
+  <time class="dt-published" datetime="2021-10-18T13:04:06.000Z" itemprop="datePublished">2021-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/">Phicomm N1 安装 Arch Linux Arm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-查看硬盘"><a href="#1-查看硬盘" class="headerlink" title="1.查看硬盘"></a>1.查看硬盘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+<h2 id="2-parted-硬盘分区"><a href="#2-parted-硬盘分区" class="headerlink" title="2.parted 硬盘分区"></a>2.parted 硬盘分区</h2><p>安装到emmc选择 mmcblk1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEV_EMMC=/dev/mmcblk1</span><br><span class="line">parted -s &quot;$&#123;DEV_EMMC&#125;&quot; mklabel msdos</span><br><span class="line">parted -s &quot;$&#123;DEV_EMMC&#125;&quot; mkpart primary fat32 700M 1024M</span><br><span class="line">parted -s &quot;$&#123;DEV_EMMC&#125;&quot; mkpart primary ext4 1024M 100%</span><br><span class="line">DEV_BOOT=/dev/mmcblk1p1</span><br><span class="line">DEV_ROOT=/dev/mmcblk1p2</span><br></pre></td></tr></table></figure>
+
+
+<p>安装到u盘选择 sda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEV_U=/dev/sda</span><br><span class="line">parted -s &quot;$&#123;DEV_U&#125;&quot; mklabel msdos</span><br><span class="line">parted -s &quot;$&#123;DEV_U&#125;&quot; mkpart primary fat32 0 256M</span><br><span class="line">parted -s &quot;$&#123;DEV_U&#125;&quot; mkpart primary ext4 256M 100%</span><br><span class="line">DEV_BOOT=/dev/sda1</span><br><span class="line">DEV_ROOT=/dev/sda2</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-格式化分区"><a href="#3-格式化分区" class="headerlink" title="3.格式化分区"></a>3.格式化分区</h2><p>emmc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfs.vfat -F 32 -n EMMC_BOOT &quot;$&#123;DEV_BOOT&#125;&quot;</span><br><span class="line">mkfs.ext4 -L EMMC_ROOT &quot;$&#123;DEV_ROOT&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>u盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkfs.vfat -F 32 -n BOOT &quot;$&#123;DEV_BOOT&#125;&quot;</span><br><span class="line">mkfs.ext4 -L ROOT &quot;$&#123;DEV_ROOT&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-挂载分区"><a href="#4-挂载分区" class="headerlink" title="4.挂载分区"></a>4.挂载分区</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount &quot;$&#123;DEV_ROOT&#125;&quot; /mnt</span><br><span class="line">mkdir -p /mnt/boot</span><br><span class="line">mount &quot;$&#123;DEV_BOOT&#125;&quot; /mnt/boot</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-下载安装-Arch-Linux"><a href="#5-下载安装-Arch-Linux" class="headerlink" title="5.下载安装 Arch Linux"></a>5.下载安装 Arch Linux</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp &amp;&amp; curl -OL https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/ArchLinuxARM-aarch64-latest.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-解压到硬盘"><a href="#6-解压到硬盘" class="headerlink" title="6.解压到硬盘"></a>6.解压到硬盘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bsdtar -xpvf ArchLinuxARM-aarch64-latest.tar.gz -C /mnt/</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-处理DNS"><a href="#7-处理DNS" class="headerlink" title="7.处理DNS"></a>7.处理DNS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unlink /mnt/etc/resolv.conf</span><br><span class="line">cat /etc/resolv.conf | tee /mnt/etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-chroot到新系统"><a href="#8-chroot到新系统" class="headerlink" title="8.chroot到新系统"></a>8.chroot到新系统</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt</span><br><span class="line">mount -t proc /proc proc</span><br><span class="line">mount --make-rslave --rbind /sys sys</span><br><span class="line">mount --make-rslave --rbind /dev dev</span><br><span class="line">mount --make-rslave --rbind /run run</span><br><span class="line">cd /</span><br><span class="line">chroot /mnt /bin/bash</span><br><span class="line"></span><br><span class="line"># 加载profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-系统设置"><a href="#9-系统设置" class="headerlink" title="9.系统设置"></a>9.系统设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># 设置locale</span><br><span class="line">echo &#x27;en_US.UTF-8 UTF-8&#x27; &gt;&gt; /etc/locale.gen</span><br><span class="line">locale-gen</span><br><span class="line"></span><br><span class="line"># 允许ssh root用户登录</span><br><span class="line">echo &#x27;PermitRootLogin yes&#x27; &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"># 设置密码</span><br><span class="line">passwd root</span><br><span class="line"></span><br><span class="line"># 设置网卡地址</span><br><span class="line">text=n1bc # 可以替换成任意字符</span><br><span class="line">macaddr=$(echo $text | md5sum | sed &#x27;s/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/&#x27;)</span><br><span class="line">echo &quot;[Link]&quot; &gt;&gt; /etc/systemd/network/eth.network</span><br><span class="line">echo &quot;MACAddress=$&#123;macaddr&#125;&quot; &gt;&gt; /etc/systemd/network/eth.network</span><br><span class="line">unset text macaddr</span><br><span class="line"></span><br><span class="line"># 设置主机名称</span><br><span class="line">nano /etc/hostname</span><br><span class="line"></span><br><span class="line"># 初始化 pacman</span><br><span class="line">pacman-key --init</span><br><span class="line">pacman-key --populate archlinuxarm</span><br><span class="line"></span><br><span class="line"># 修改软件源</span><br><span class="line">nano /etc/pacman.d/mirrorlist</span><br><span class="line"># 在最前面添加</span><br><span class="line">Server = https://mirrors.ustc.edu.cn/archlinuxarm/$arch/$repo</span><br><span class="line"></span><br><span class="line"># 设置 fstab</span><br><span class="line">lsblk -f # 查看uuid</span><br><span class="line">UUID_ROOT=root分区uuid</span><br><span class="line">UUID_BOOT=boot分区uuid</span><br><span class="line">echo &quot;UUID=$&#123;UUID_ROOT&#125; / ext4 rw,relatime 0 1&quot; &gt;&gt; /etc/fstab</span><br><span class="line">echo &quot;UUID=$&#123;UUID_BOOT&#125; /boot vfat rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro 0 2&quot; &gt;&gt; /etc/fstab</span><br><span class="line">unset UUID_ROOT UUID_BOOT</span><br></pre></td></tr></table></figure>
+
+<h2 id="10-编译内核（交叉编译）"><a href="#10-编译内核（交叉编译）" class="headerlink" title="10.编译内核（交叉编译）"></a>10.编译内核（交叉编译）</h2><h3 id="下载-交叉编译工具链"><a href="#下载-交叉编译工具链" class="headerlink" title="下载 交叉编译工具链"></a>下载 交叉编译工具链</h3><p><a target="_blank" rel="noopener" href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads">https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads</a></p>
+<p>win 选择<br>Windows (mingw-w64-i686) hosted cross compilers -&gt;<br>AArch64 GNU/Linux target (aarch64-none-linux-gnu) -&gt;<br>gcc-arm-10.3-2021.07-mingw-w64-i686-aarch64-none-linux-gnu.tar.xz</p>
+<p>linux 选择<br>x86_64 Linux hosted cross compilers -&gt;<br>AArch64 GNU/Linux target (aarch64-none-linux-gnu) -&gt;<br>gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz</p>
+<p>下载后解压设置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">xz -d gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz</span><br><span class="line">tar -xvf gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar</span><br><span class="line">export PATH=解压路径/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载-Linux-Kernel"><a href="#下载-Linux-Kernel" class="headerlink" title="下载 Linux Kernel"></a>下载 Linux Kernel</h3><p><a target="_blank" rel="noopener" href="https://www.kernel.org/">https://www.kernel.org</a></p>
+<p>解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">xz -d linux-5.14.13.tar.xz</span><br><span class="line">tar -xvf linux-5.14.13.tar</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取-Phicomm-N1的-补丁文件"><a href="#获取-Phicomm-N1的-补丁文件" class="headerlink" title="获取 Phicomm N1的 补丁文件"></a>获取 Phicomm N1的 补丁文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">git clone https://aur.archlinux.org/linux-phicomm-n1.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="交叉编译设置"><a href="#交叉编译设置" class="headerlink" title="交叉编译设置"></a>交叉编译设置</h3><p>复制 补丁文件 中 config 文件到 Linux Kernel 文件夹 重命名 .config</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ～/linux-5.14.13</span><br><span class="line">cat ～/linux-phicomm-n1/config &gt; ./.config</span><br></pre></td></tr></table></figure>
+
+<h3 id="打补丁-amp-替换dts"><a href="#打补丁-amp-替换dts" class="headerlink" title="打补丁&amp;替换dts"></a>打补丁&amp;替换dts</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ～/linux-5.14.13</span><br><span class="line">patch -p1 -i &quot;$&#123;srcdir&#125;/01-aegis-crypto-gcc10.patch&quot;</span><br><span class="line">patch -p1 &lt; &quot;$&#123;srcdir&#125;/02-revert-TEXT_OFFSET-deletion.patch&quot;</span><br><span class="line">patch -p1 &lt; &quot;$&#123;srcdir&#125;/03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch&quot;</span><br><span class="line">cat &quot;$&#123;srcdir&#125;/$&#123;target_dts&#125;&quot; &gt; &quot;./arch/arm64/boot/dts/amlogic/$&#123;target_dts&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ARCH=arm64</span><br><span class="line">make -j16 LOCALVERSION=&quot;-n1bc&quot; targz-pkg</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成-initramfs-img"><a href="#生成-initramfs-img" class="headerlink" title="生成 initramfs.img"></a>生成 initramfs.img</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkinitcpio -p xxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成-uInitrd"><a href="#生成-uInitrd" class="headerlink" title="生成 uInitrd"></a>生成 uInitrd</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkimage -A arm64 -O linux -T ramdisk -C gzip -n uInitrd -d /boot/initramfs-linux.img /boot/uInitrd</span><br><span class="line">mkimage -A arm64 -O linux -T ramdisk -C gzip -n uInitrd -d /mnt/boot/initramfs-linux.img /mnt/boot/uInitrd</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成-autoscript"><a href="#生成-autoscript" class="headerlink" title="生成 autoscript"></a>生成 autoscript</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkimage -A arm -T script -C none -d /mnt/boot/emmc_autoscript.cmd /mnt/boot/emmc_autoscript</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="重启后设置"><a href="#重启后设置" class="headerlink" title="重启后设置"></a>重启后设置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 设置时区</span><br><span class="line">timedatectl set-timezone Asia/Shanghai</span><br><span class="line"></span><br><span class="line"># 删除默认用户</span><br><span class="line">userdel -rf alarm</span><br><span class="line"></span><br><span class="line"># 添加用户并修改密码</span><br><span class="line">useradd -m -G wheel username</span><br><span class="line">passwd username</span><br><span class="line"></span><br><span class="line"># 更新系统</span><br><span class="line">pacman -Syu</span><br><span class="line"></span><br><span class="line"># 安装常用应用</span><br><span class="line">pacman -S base-devel vim git</span><br><span class="line"></span><br><span class="line"># 为wheel用户组添加sudo权限</span><br><span class="line">vim /etc/sudoers # 删除 %wheel ALL=(ALL) ALL 前面的注释</span><br><span class="line"></span><br><span class="line"># 删除ssh root登录权限</span><br><span class="line">vim /etc/ssh/sshd_config # 删除 PermitRootLogin yes 那一行</span><br></pre></td></tr></table></figure>
+<h3 id="需要软件"><a href="#需要软件" class="headerlink" title="需要软件"></a>需要软件</h3><p>mkfs.vfat    dosfstools<br>mkimage      uboot-tools<br>lsusb        usbutils</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/" data-id="ckysqp4y60000fpte9kxg0bbn" data-title="Phicomm N1 安装 Arch Linux Arm" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-Class" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/11/Java-Class/" class="article-date">
+  <time class="dt-published" datetime="2021-09-10T16:13:26.000Z" itemprop="datePublished">2021-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/11/Java-Class/">Java-Class</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyly/p/10727511.html">https://www.cnblogs.com/zyly/p/10727511.html</a></p>
+<h2 id="反射包-Reflect"><a href="#反射包-Reflect" class="headerlink" title="反射包 Reflect"></a>反射包 Reflect</h2><p>使用反射包 可生成 Class对象 中的 Constructor Field Method 等类的对象</p>
+<h2 id="代理-Proxy-newProxyInstance"><a href="#代理-Proxy-newProxyInstance" class="headerlink" title="代理 Proxy.newProxyInstance"></a>代理 Proxy.newProxyInstance</h2><p>Proxy.newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)</p>
+<ul>
+<li>loader：选用的类加载器。因为代理的是zack，所以一般都会用加载zack的类加载器；</li>
+<li>interfaces：被代理的类所实现的接口，这个接口可以是多个；</li>
+<li>h：绑定代理类的一个方法，或者是InvacationHandler接口的一个实现；</li>
+</ul>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>可用 () -&gt; {} 格式生成实现指定接口的内部类</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/11/Java-Class/" data-id="ckuceeyjh0006h02mesx20lbz" data-title="Java-Class" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2021-09-10T14:14:17.000Z" itemprop="datePublished">2021-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/">Java-注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public @interface TestAnnotation&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface TestAnnotation&#123;</span><br><span class="line">  int id();</span><br><span class="line">  String msg();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public @interface TestAnnotation&#123;</span><br><span class="line">  int id();</span><br><span class="line">  String msg() default &quot;error&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="元注解-用于自定义注解"><a href="#元注解-用于自定义注解" class="headerlink" title="元注解 用于自定义注解"></a>元注解 用于自定义注解</h2><ol>
+<li>@Retention 注解的存活时间</li>
+<li>@Documented 将注解中的元素包含到 Javadoc 中去</li>
+<li>@Target 指定了注解运用的地方</li>
+<li>@Inherited 如果一个超类被 @Inherited 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解</li>
+<li>@Repeatable 注解的值可以同时取多个</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/" data-id="ckuceeyjk000fh02m4isd53zq" data-title="Java-注解" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-枚举" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/" class="article-date">
+  <time class="dt-published" datetime="2021-09-05T09:28:50.000Z" itemprop="datePublished">2021-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/">Java-枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么枚举类的定义如下"><a href="#为什么枚举类的定义如下" class="headerlink" title="为什么枚举类的定义如下"></a>为什么枚举类的定义如下</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Enum&lt;E extends Enum&lt;E&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>这个的意思是：Enum的泛型类型实参只能是继承Enum的子类，并且要求子类只能从Enum继承自己类型的方法（compareTo等）</p>
+<h2 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public enum Color&#123;</span><br><span class="line">  RED,BLUE,GREEN</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/#more">阅读更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/" data-id="ckuceeyjm000lh02m6age4bff" data-title="Java-枚举" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-Servlet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/05/Java-Servlet/" class="article-date">
+  <time class="dt-published" datetime="2021-09-05T03:10:20.000Z" itemprop="datePublished">2021-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/05/Java-Servlet/">Java-Servlet</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><p>Tomcat是Setvlet应用的运行容器<br>下载链接：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/">https://tomcat.apache.org</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2021/09/05/Java-Servlet/#more">阅读更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/05/Java-Servlet/" data-id="ckuceeyji0009h02m6qe59pd3" data-title="Java-Servlet" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-线程通信" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/03/Java-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/" class="article-date">
+  <time class="dt-published" datetime="2021-09-03T14:05:21.000Z" itemprop="datePublished">2021-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/03/Java-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/">Java-线程通信</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h2><p>使用 synchronized(obj){} 包住的代码块称为同步代码块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">synchronized(obj)&#123;</span><br><span class="line">  代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="同步锁"><a href="#同步锁" class="headerlink" title="同步锁"></a>同步锁</h2><p>同步锁可以解决多个线程对共享资源的竞争</p>
+<ul>
+<li>每个Java对象都有且只有一个同步锁，这只是一种概念，也可以称以一个对象为标记的锁。</li>
+<li>在任何时候，最多只有一个线程拥有特定对象的锁</li>
+<li>当线程需要执行同步代码块synchronized(obj){}标记的代码时，必须获得obj变量所引用对象的锁。</li>
+<li>没有获得锁的线程会被放入同步代码块obj的锁池中，这个线程会进入阻塞状态。</li>
+<li>当持有同步锁的线程释放了锁后，Java虚拟机会随机从obj的锁池中选一个线程，使这个线程拥有同步锁，这个线程进入就绪状态。</li>
+<li>假如一个线程需要的锁没有被其他线程占用，那么这个线程就自动拥有这把锁。</li>
+</ul>
+<h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h2><p>java.lang.Object类提供了以下方法用于线程通信</p>
+<ul>
+<li>obj.wait() 执行该方法的线程释放obj的同步锁，并将该线程放入obj的等待池中</li>
+<li>obj.notify() 执行该方法的线程随机唤醒obj等待池中的一个线程，将其放入锁池中</li>
+<li>obj.notifyAll() 同上，将所有obj等待池中的线程放进锁池中。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/03/Java-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/" data-id="ckuceeyjj000dh02may506hur" data-title="Java-线程通信" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-泛型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-09-01T13:57:55.000Z" itemprop="datePublished">2021-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/">Java-泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么要使用泛型"><a href="#为什么要使用泛型" class="headerlink" title="为什么要使用泛型"></a>为什么要使用泛型</h2><p>泛型是为了参数化类型，而不必创建新的类型。</p>
+<h2 id="泛型的三种使用方式"><a href="#泛型的三种使用方式" class="headerlink" title="泛型的三种使用方式"></a>泛型的三种使用方式</h2><ul>
+<li>泛型类</li>
+<li>泛型接口</li>
+<li>泛型方法</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/#more">阅读更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/" data-id="ckuceeyjj000ch02m59rfgfdv" data-title="Java-泛型" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-JDBC-API" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/30/Java-JDBC-API/" class="article-date">
+  <time class="dt-published" datetime="2021-08-30T14:02:43.000Z" itemprop="datePublished">2021-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/30/Java-JDBC-API/">Java-JDBC API</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="接口与类"><a href="#接口与类" class="headerlink" title="接口与类"></a>接口与类</h2><ul>
+<li>Driver 接口和 DriverManager 类 负责驱动与驱动管理器</li>
+<li>Connection 接口 负责数据库连接</li>
+<li>Statement 接口 负责执行SQL语句</li>
+<li>PreparedStatement 接口 负责执行SQL存储过程</li>
+<li>ResultSet 接口 表示SQL查询语句返回结果集</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2021/08/30/Java-JDBC-API/#more">阅读更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/08/30/Java-JDBC-API/" data-id="ckuceeyjk000gh02mczpb76y0" data-title="Java-JDBC API" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/22/Java-%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2021-08-22T06:44:09.000Z" itemprop="datePublished">2021-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/22/Java-%E5%B9%B6%E5%8F%91/">Java-并发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>进程是指运行中的应用程序，每一个进程都有自己独立的内存空间。<br>每次使用java命令，就启动一个独立的Java虚拟机进程。<br>线程是指进程中的一个执行流程，一个进程可以同时执行多个不同的线程。<br>当进程中内多个线程同时运行时，这种运行方式称之为并发。<br>每次使用java命令启动一个Java虚拟机进程，都会创建一个main主线程。<br>创建线程有两种办法。</p>
+<ul>
+<li>拓展java.lang.Thread类</li>
+<li>实现java.lang.Runnable接口</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2021/08/22/Java-%E5%B9%B6%E5%8F%91/#more">阅读更多</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/08/22/Java-%E5%B9%B6%E5%8F%91/" data-id="ckuceeyjj000bh02mh8g8ep2e" data-title="Java-并发" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/react/" style="font-size: 10px;">react</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/">Phicomm N1 安装 Arch Linux Arm</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/11/Java-Class/">Java-Class</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/">Java-注解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/">Java-枚举</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 chuan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

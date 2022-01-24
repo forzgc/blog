@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ES6-模块 | 川的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Web环境使用模块的方法script标签默认加载的是脚本，脚本会把代码放在一个环境中运行。模块则会将不同模块的代码放在不同的环境中执行，每个模块文件的顶层this是undefined。使用type&#x3D;”module”可加载模块代码 1234&lt;script type&#x3D;&quot;module&quot; src&#x3D;&quot;...&quot;&gt;&lt;&#x2F;script&gt;&lt;scri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6-模块">
+<meta property="og:url" content="https://blog.forzgc.cn/2021/07/18/ES6-%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="川的小屋">
+<meta property="og:description" content="Web环境使用模块的方法script标签默认加载的是脚本，脚本会把代码放在一个环境中运行。模块则会将不同模块的代码放在不同的环境中执行，每个模块文件的顶层this是undefined。使用type&#x3D;”module”可加载模块代码 1234&lt;script type&#x3D;&quot;module&quot; src&#x3D;&quot;...&quot;&gt;&lt;&#x2F;script&gt;&lt;scri">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-18T04:53:47.000Z">
+<meta property="article:modified_time" content="2021-10-03T15:26:22.699Z">
+<meta property="article:author" content="chuan">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="川的小屋" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">川的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.forzgc.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ES6-模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/18/ES6-%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time class="dt-published" datetime="2021-07-18T04:53:47.000Z" itemprop="datePublished">2021-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ES6-模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Web环境使用模块的方法"><a href="#Web环境使用模块的方法" class="headerlink" title="Web环境使用模块的方法"></a>Web环境使用模块的方法</h2><p>script标签默认加载的是脚本，脚本会把代码放在一个环境中运行。<br>模块则会将不同模块的代码放在不同的环境中执行，每个模块文件的顶层this是undefined。<br>使用type=”module”可加载模块代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;module&quot; src=&quot;...&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;module&quot;&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h3><p>使用关键字 export 可以将变量、函数或类导出。<br>导出时函数或类如果是非默认导出，都需要指定名称，不能是匿名的。<br>模块中未导出的变量、函数或类是不能在外部访问使用的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// module.js</span><br><span class="line"></span><br><span class="line">// 导出声明/表达式</span><br><span class="line">export var a = &quot;a&quot;;</span><br><span class="line">export let b = &quot;b&quot;;</span><br><span class="line">export const c = &quot;c&quot;;</span><br><span class="line"></span><br><span class="line">export function sum(num1,num2)&#123;</span><br><span class="line">    return num1+num2;</span><br><span class="line">&#125;</span><br><span class="line">export class People&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 未导出的声明，在模块外部无法访问使用</span><br><span class="line">var d = &quot;d&quot;;</span><br><span class="line"></span><br><span class="line">// 集中导出</span><br><span class="line">var e = &quot;e&quot;;</span><br><span class="line">var f = &quot;f&quot;;</span><br><span class="line">export &#123;</span><br><span class="line">    e,</span><br><span class="line">    f,</span><br><span class="line">&#125;</span><br><span class="line">var g = &quot;g&quot;;</span><br><span class="line">expoet g; // 错误写法，因为g不是引用值，只能通过&#123;g&#125;导出</span><br></pre></td></tr></table></figure>
+
+<p>导出时重命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;a&quot;;</span><br><span class="line">export &#123;a as b&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>导出默认值<br>一个模块只能导入一个默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export default 值/变量/函数/类</span><br><span class="line">export &#123;xxx as default&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><p>使用关键字 import 可以导入模块的导出。<br>import 后面的大括号表示从模块导入的绑定（binding），from表示从哪个文件导入。<br>导入时需要指明模块文件的完整路径，包括格式后缀。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123;a,b,c,sum,People&#125; from &quot;./module.js&quot;;</span><br><span class="line">console.log(a);</span><br><span class="line">console.log(b);</span><br><span class="line">console.log(c);</span><br><span class="line">console.log(sum);</span><br><span class="line">console.log(People);</span><br></pre></td></tr></table></figure>
+
+<p>导入时重命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;a as A&#125; from &quot;./module.js&quot;;</span><br><span class="line">console.log(A);</span><br></pre></td></tr></table></figure>
+
+<p>导入默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 将默认值赋值给defalutValue</span><br><span class="line">import defalutValue from &quot;./module.js&quot;;</span><br><span class="line">import &#123;default as defalutValue&#125; from &quot;./module.js&quot;;</span><br><span class="line">// 导入默认值和非默认值可以写在一起</span><br><span class="line">import defalutValue,&#123;a,b&#125; from &quot;./module.js&quot;;</span><br><span class="line">import &#123;default as defalutValue,a,b&#125; from &quot;./module.js&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>导入模块的所有导出<br>用 (* as xxx) 可将所有导出封装成一个Module对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import * as moduleObj from &quot;./module.js&quot;</span><br><span class="line">console.log(moduleObj);</span><br></pre></td></tr></table></figure>
+
+<p>导入的绑定（binding）不能被修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;a&#125; from &quot;./module.js&quot;;</span><br><span class="line">a = &quot;a1&quot;; // 报错</span><br></pre></td></tr></table></figure>
+
+<p>不管模块被多少其他模块导入使用，模块只会被导入一次，所有导入它的模块使用的都是同一个被导入模块的实例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// module1.js</span><br><span class="line">export var a = &quot;a&quot;;</span><br><span class="line">console.log(&quot;module1导出&quot;);</span><br><span class="line"></span><br><span class="line">// module2.js</span><br><span class="line">import &#123;a&#125; from &quot;./module1.js&quot;;</span><br><span class="line">console.log(&quot;module2导入module1&quot;);</span><br><span class="line">export var b = &quot;b&quot;;</span><br><span class="line">console.log(&quot;module2导出&quot;);</span><br><span class="line"></span><br><span class="line">// module.js</span><br><span class="line">import &#123;a&#125; from &quot;./module1.js&quot;</span><br><span class="line">import &#123;b&#125; from &quot;./module2.js&quot;</span><br><span class="line">console.log(&quot;module导入module1&quot;);</span><br><span class="line">console.log(&quot;module导入module2&quot;);</span><br><span class="line"></span><br><span class="line">// 结果</span><br><span class="line">// module1导出</span><br><span class="line">// module2导入module1</span><br><span class="line">// module2导出</span><br><span class="line">// module导入module1</span><br><span class="line">// module导入module2</span><br></pre></td></tr></table></figure>
+
+<h3 id="导出导入的绑定"><a href="#导出导入的绑定" class="headerlink" title="导出导入的绑定"></a>导出导入的绑定</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import &#123; a &#125; from &quot;./module.js&quot;;</span><br><span class="line">export &#123; a &#125;;</span><br><span class="line">// 或者</span><br><span class="line">export &#123; a &#125; from &quot;./module.js&quot;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="无绑定导入"><a href="#无绑定导入" class="headerlink" title="无绑定导入"></a>无绑定导入</h2><p>如果导入的模块只修改作用域下的变量，比如Object、Array等，而不导出任何东西，那么可以进行无无绑定导入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// module1.js</span><br><span class="line">Array.prototype.pushAll = function(items)&#123;...&#125;</span><br><span class="line"></span><br><span class="line">// module.js</span><br><span class="line">import &quot;./module1.js&quot;</span><br></pre></td></tr></table></figure>
+<p>这个意味着，只要导入了模块，模块就可以对全局对象进行修改。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/07/18/ES6-%E6%A8%A1%E5%9D%97/" data-id="ckuceeyjg0003h02m454c5lv5" data-title="ES6-模块" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/20/Java-%E5%85%A5%E9%97%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Java 入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/17/ES6-%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%B0%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">ES6-代理与反射</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/react/" style="font-size: 10px;">react</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/">Phicomm N1 安装 Arch Linux Arm</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/11/Java-Class/">Java-Class</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/">Java-注解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/">Java-枚举</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 chuan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

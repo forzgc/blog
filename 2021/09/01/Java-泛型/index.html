@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java-泛型 | 川的小屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="为什么要使用泛型泛型是为了参数化类型，而不必创建新的类型。 泛型的三种使用方式 泛型类 泛型接口 泛型方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-泛型">
+<meta property="og:url" content="https://blog.forzgc.cn/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/index.html">
+<meta property="og:site_name" content="川的小屋">
+<meta property="og:description" content="为什么要使用泛型泛型是为了参数化类型，而不必创建新的类型。 泛型的三种使用方式 泛型类 泛型接口 泛型方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-01T13:57:55.000Z">
+<meta property="article:modified_time" content="2021-10-03T15:26:22.700Z">
+<meta property="article:author" content="chuan">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="川的小屋" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">川的小屋</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.forzgc.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Java-泛型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-09-01T13:57:55.000Z" itemprop="datePublished">2021-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java-泛型
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么要使用泛型"><a href="#为什么要使用泛型" class="headerlink" title="为什么要使用泛型"></a>为什么要使用泛型</h2><p>泛型是为了参数化类型，而不必创建新的类型。</p>
+<h2 id="泛型的三种使用方式"><a href="#泛型的三种使用方式" class="headerlink" title="泛型的三种使用方式"></a>泛型的三种使用方式</h2><ul>
+<li>泛型类</li>
+<li>泛型接口</li>
+<li>泛型方法</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class 类名称 &lt;泛型标识：可以随便写任意标识号，标识指定的泛型的类型&gt;&#123;</span><br><span class="line">  private 泛型标识 /*（成员变量类型）*/ var; </span><br><span class="line">  .....</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型</span><br><span class="line">//在实例化泛型类时，必须指定T的具体类型</span><br><span class="line">public class Generic&lt;T&gt;&#123; </span><br><span class="line">    //key这个成员变量的类型为T,T的类型由外部指定  </span><br><span class="line">    private T key;</span><br><span class="line"></span><br><span class="line">    public Generic(T key) &#123; //泛型构造方法形参key的类型也为T，T的类型由外部指定</span><br><span class="line">        this.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getKey()&#123; //泛型方法getKey的返回值类型为T，T的类型由外部指定</span><br><span class="line">        return key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//泛型的类型参数只能是类类型（包括自定义类），不能是简单类型</span><br><span class="line">//传入的实参类型需与泛型的类型参数类型相同，即为Integer.</span><br><span class="line">Generic&lt;Integer&gt; genericInteger = new Generic&lt;Integer&gt;(123456);</span><br><span class="line"></span><br><span class="line">//传入的实参类型需与泛型的类型参数类型相同，即为String.</span><br><span class="line">Generic&lt;String&gt; genericString = new Generic&lt;String&gt;(&quot;key_vlaue&quot;);</span><br><span class="line">Log.d(&quot;泛型测试&quot;,&quot;key is &quot; + genericInteger.getKey());</span><br><span class="line">Log.d(&quot;泛型测试&quot;,&quot;key is &quot; + genericString.getKey());</span><br></pre></td></tr></table></figure>
+
+<p>在使用泛型的时候如果传入泛型实参，则会根据传入的泛型实参做相应的限制，此时泛型才会起到本应起到的限制作用。<br>如果不传入泛型类型实参的话，在泛型类中使用泛型的方法或成员变量定义的类型可以为任何的类型。</p>
+<p>注意：</p>
+<ul>
+<li>泛型的类型参数只能是类类型，不能是简单类型。</li>
+<li>不能对确切的泛型类型使用instanceof操作。如下面的操作是非法的，编译时会出错:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(ex_num instanceof Generic&lt;Number&gt;)&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//定义一个泛型接口</span><br><span class="line">public interface Generator&lt;T&gt; &#123;</span><br><span class="line">    public T next();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 未传入泛型实参时，与泛型类的定义相同，在声明类的时候，需将泛型的声明也一起加到类中</span><br><span class="line"> * 即：class FruitGenerator&lt;T&gt; implements Generator&lt;T&gt;&#123;</span><br><span class="line"> * 如果不声明泛型，如：class FruitGenerator implements Generator&lt;T&gt;，编译器会报错：&quot;Unknown class&quot;</span><br><span class="line"> */</span><br><span class="line">class FruitGenerator&lt;T&gt; implements Generator&lt;T&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public T next() &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 传入泛型实参时：</span><br><span class="line"> * 定义一个生产器实现这个接口,虽然我们只创建了一个泛型接口Generator&lt;T&gt;</span><br><span class="line"> * 但是我们可以为T传入无数个实参，形成无数种类型的Generator接口。</span><br><span class="line"> * 在实现类实现泛型接口时，如已将泛型类型传入实参类型，则所有使用泛型的地方都要替换成传入的实参类型</span><br><span class="line"> * 即：Generator&lt;T&gt;，public T next();中的的T都要替换成传入的String类型。</span><br><span class="line"> */</span><br><span class="line">public class FruitGenerator implements Generator&lt;String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private String[] fruits = new String[]&#123;&quot;Apple&quot;, &quot;Banana&quot;, &quot;Pear&quot;&#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String next() &#123;</span><br><span class="line">        Random rand = new Random();</span><br><span class="line">        return fruits[rand.nextInt(3)];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型通配符"><a href="#泛型通配符" class="headerlink" title="泛型通配符"></a>泛型通配符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void showKeyValue1(Generic&lt;Number&gt; obj)&#123;</span><br><span class="line">    Log.d(&quot;泛型测试&quot;,&quot;key value is &quot; + obj.getKey());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Generic&lt;Integer&gt; gInteger = new Generic&lt;Integer&gt;(123);</span><br><span class="line">Generic&lt;Number&gt; gNumber = new Generic&lt;Number&gt;(456);</span><br><span class="line"></span><br><span class="line">showKeyValue(gNumber);</span><br><span class="line"></span><br><span class="line">// showKeyValue这个方法编译器会为我们报错：Generic&lt;java.lang.Integer&gt; </span><br><span class="line">// cannot be applied to Generic&lt;java.lang.Number&gt;</span><br><span class="line">// showKeyValue(gInteger);</span><br></pre></td></tr></table></figure>
+
+<p>解决办法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void showKeyValue1(Generic&lt;?&gt; obj)&#123;</span><br><span class="line">    Log.d(&quot;泛型测试&quot;,&quot;key value is &quot; + obj.getKey());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类型通配符一般是使用 ? 代替具体的类型实参，注意了，此处 ? 是类型实参，而不是类型形参。<br>可以解决当具体类型不确定的时候，这个通配符就是 ?<br>当操作类型时，不需要使用类型的具体功能时，只使用Object类中的功能。那么可以用 ? 通配符来表示未知类型。</p>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>泛型方法，是在调用方法的时候指明泛型的具体类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 泛型方法的基本介绍</span><br><span class="line"> * @param tClass 传入的泛型实参</span><br><span class="line"> * @return T 返回值为T类型</span><br><span class="line"> * 说明：</span><br><span class="line"> *     1）public 与 返回值中间&lt;T&gt;非常重要，可以理解为声明此方法为泛型方法。</span><br><span class="line"> *     2）只有声明了&lt;T&gt;的方法才是泛型方法，泛型类中的使用了泛型的成员方法并不是泛型方法。</span><br><span class="line"> *     3）&lt;T&gt;表明该方法将使用泛型类型T，此时才可以在方法中使用泛型类型T。</span><br><span class="line"> *     4）与泛型类的定义一样，此处T可以随便写为任意标识，常见的如T、E、K、V等形式的参数常用于表示泛型。</span><br><span class="line"> */</span><br><span class="line">public &lt;T&gt; T genericMethod(Class&lt;T&gt; tClass)throws InstantiationException, IllegalAccessException&#123;</span><br><span class="line">        T instance = tClass.newInstance();</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">public class GenericFruit &#123;</span><br><span class="line">    class Fruit&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return &quot;fruit&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Apple extends Fruit&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return &quot;apple&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Person&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return &quot;Person&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class GenerateTest&lt;T&gt;&#123;</span><br><span class="line">        public void show_1(T t)&#123;</span><br><span class="line">            System.out.println(t.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //在泛型类中声明了一个泛型方法，使用泛型E，这种泛型E可以为任意类型。可以类型与T相同，也可以不同。</span><br><span class="line">        //由于泛型方法在声明的时候会声明泛型&lt;E&gt;，因此即使在泛型类中并未声明泛型，编译器也能够正确识别泛型方法中识别的泛型。</span><br><span class="line">        public &lt;E&gt; void show_3(E t)&#123;</span><br><span class="line">            System.out.println(t.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //在泛型类中声明了一个泛型方法，使用泛型T，注意这个T是一种全新的类型，可以与泛型类中声明的T不是同一种类型。</span><br><span class="line">        public &lt;T&gt; void show_2(T t)&#123;</span><br><span class="line">            System.out.println(t.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Apple apple = new Apple();</span><br><span class="line">        Person person = new Person();</span><br><span class="line"></span><br><span class="line">        GenerateTest&lt;Fruit&gt; generateTest = new GenerateTest&lt;Fruit&gt;();</span><br><span class="line">        //apple是Fruit的子类，所以这里可以</span><br><span class="line">        generateTest.show_1(apple);</span><br><span class="line">        //编译器会报错，因为泛型类型实参指定的是Fruit，而传入的实参类是Person</span><br><span class="line">        //generateTest.show_1(person);</span><br><span class="line"></span><br><span class="line">        //使用这两个方法都可以成功</span><br><span class="line">        generateTest.show_2(apple);</span><br><span class="line">        generateTest.show_2(person);</span><br><span class="line"></span><br><span class="line">        //使用这两个方法也都可以成功</span><br><span class="line">        generateTest.show_3(apple);</span><br><span class="line">        generateTest.show_3(person);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">public class GenericTest &#123;</span><br><span class="line">   //这个类是个泛型类，在上面已经介绍过</span><br><span class="line">   public class Generic&lt;T&gt;&#123;     </span><br><span class="line">        private T key;</span><br><span class="line"></span><br><span class="line">        public Generic(T key) &#123;</span><br><span class="line">            this.key = key;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //我想说的其实是这个，虽然在方法中使用了泛型，但是这并不是一个泛型方法。</span><br><span class="line">        //这只是类中一个普通的成员方法，只不过他的返回值是在声明泛型类已经声明过的泛型。</span><br><span class="line">        //所以在这个方法中才可以继续使用 T 这个泛型。</span><br><span class="line">        public T getKey()&#123;</span><br><span class="line">            return key;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**</span><br><span class="line">         * 这个方法显然是有问题的，在编译器会给我们提示这样的错误信息&quot;cannot reslove symbol E&quot;</span><br><span class="line">         * 因为在类的声明中并未声明泛型E，所以在使用E做形参和返回值类型时，编译器会无法识别。</span><br><span class="line">        public E setKey(E key)&#123;</span><br><span class="line">             this.key = keu</span><br><span class="line">        &#125;</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** </span><br><span class="line">     * 这才是一个真正的泛型方法。</span><br><span class="line">     * 首先在public与返回值之间的&lt;T&gt;必不可少，这表明这是一个泛型方法，并且声明了一个泛型T</span><br><span class="line">     * 这个T可以出现在这个泛型方法的任意位置.</span><br><span class="line">     * 泛型的数量也可以为任意多个 </span><br><span class="line">     *    如：public &lt;T,K&gt; K showKeyName(Generic&lt;T&gt; container)&#123;</span><br><span class="line">     *        ...</span><br><span class="line">     *        &#125;</span><br><span class="line">     */</span><br><span class="line">    public &lt;T&gt; T showKeyName(Generic&lt;T&gt; container)&#123;</span><br><span class="line">        System.out.println(&quot;container key :&quot; + container.getKey());</span><br><span class="line">        //当然这个例子举的不太合适，只是为了说明泛型方法的特性。</span><br><span class="line">        T test = container.getKey();</span><br><span class="line">        return test;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //这也不是一个泛型方法，这就是一个普通的方法，只是使用了Generic&lt;Number&gt;这个泛型类做形参而已。</span><br><span class="line">    public void showKeyValue1(Generic&lt;Number&gt; obj)&#123;</span><br><span class="line">        Log.d(&quot;泛型测试&quot;,&quot;key value is &quot; + obj.getKey());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //这也不是一个泛型方法，这也是一个普通的方法，只不过使用了泛型通配符?</span><br><span class="line">    //同时这也印证了泛型通配符章节所描述的，?是一种类型实参，可以看做为Number等所有类的父类</span><br><span class="line">    public void showKeyValue2(Generic&lt;?&gt; obj)&#123;</span><br><span class="line">        Log.d(&quot;泛型测试&quot;,&quot;key value is &quot; + obj.getKey());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     /**</span><br><span class="line">     * 这个方法是有问题的，编译器会为我们提示错误信息：&quot;UnKnown class &#x27;E&#x27; &quot;</span><br><span class="line">     * 虽然我们声明了&lt;T&gt;,也表明了这是一个可以处理泛型的类型的泛型方法。</span><br><span class="line">     * 但是只声明了泛型类型T，并未声明泛型类型E，因此编译器并不知道该如何处理E这个类型。</span><br><span class="line">    public &lt;T&gt; T showKeyName(Generic&lt;E&gt; container)&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;  </span><br><span class="line">    */</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 这个方法也是有问题的，编译器会为我们提示错误信息：&quot;UnKnown class &#x27;T&#x27; &quot;</span><br><span class="line">     * 对于编译器来说T这个类型并未项目中声明过，因此编译也不知道该如何编译这个类。</span><br><span class="line">     * 所以这也不是一个正确的泛型方法声明。</span><br><span class="line">    public void showkey(T genericObj)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="泛型方法与可变参数"><a href="#泛型方法与可变参数" class="headerlink" title="泛型方法与可变参数"></a>泛型方法与可变参数</h3><p>通常可变参数只能为同一种类型，使用泛型后，可以传入不同类型的参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; void printMsg( T... args)&#123;</span><br><span class="line">    for(T t : args)&#123;</span><br><span class="line">        Log.d(&quot;泛型测试&quot;,&quot;t is &quot; + t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">printMsg(&quot;111&quot;,222,&quot;aaaa&quot;,&quot;2323.4&quot;,55.55);</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态方法与泛型"><a href="#静态方法与泛型" class="headerlink" title="静态方法与泛型"></a>静态方法与泛型</h3><p>静态方法中如果要用泛型，必须在方法上定义，不能使用泛型类声明的泛型，因为泛型类的泛型只针对实例。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class StaticGenerator&lt;T&gt; &#123;</span><br><span class="line">    ....</span><br><span class="line">    ....</span><br><span class="line">    /**</span><br><span class="line">     * 如果在类中定义使用泛型的静态方法，需要添加额外的泛型声明（将这个方法定义成泛型方法）</span><br><span class="line">     * 即使静态方法要使用泛型类中已经声明过的泛型也不可以。</span><br><span class="line">     * 如：public static void show(T t)&#123;..&#125;,此时编译器会提示错误信息：</span><br><span class="line">          &quot;StaticGenerator cannot be refrenced from static context&quot;</span><br><span class="line">     */</span><br><span class="line">    public static &lt;T&gt; void show(T t)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型上下边界"><a href="#泛型上下边界" class="headerlink" title="泛型上下边界"></a>泛型上下边界</h3><p>上边界：<br>泛型通配符 ？extends XXX<br>泛型的声明 T extends XXX</p>
+<p>下边界：<br>泛型通配符 ? super XXX</p>
+<h2 id="本文来源"><a href="#本文来源" class="headerlink" title="本文来源"></a>本文来源</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coprince/p/8603492.html">https://www.cnblogs.com/coprince/p/8603492.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.forzgc.cn/2021/09/01/Java-%E6%B3%9B%E5%9E%8B/" data-id="ckuceeyjj000ch02m59rfgfdv" data-title="Java-泛型" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/03/Java-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Java-线程通信
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/30/Java-JDBC-API/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Java-JDBC API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/react/" style="font-size: 10px;">react</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/15/React/">React</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/18/Phicomm-N1-%E5%AE%89%E8%A3%85-Arch-Linux-Arm/">Phicomm N1 安装 Arch Linux Arm</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/11/Java-Class/">Java-Class</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/10/Java-%E6%B3%A8%E8%A7%A3/">Java-注解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/Java-%E6%9E%9A%E4%B8%BE/">Java-枚举</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 chuan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
